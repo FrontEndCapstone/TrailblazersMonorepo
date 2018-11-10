@@ -8,6 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "init": "git submodule add git@github.com:FrontEndCapstone/ProdcutDescription.git; git submodule add git@github.com:FrontEndCapstone/Product-Details.git; git submodule add git@github.com:FrontEndCapstone/ProductComparisons.git; git submodule add git@github.com:FrontEndCapstone/Reviews.git",
     "update-all": "git submodule foreach git pull origin master",
     "build": "webpack-cli -p"
   },
