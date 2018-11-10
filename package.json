@@ -8,6 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
+    "update-all": "git submodule foreach git pull origin master",
     "build": "webpack-cli -p"
   },
   "dependencies": {
