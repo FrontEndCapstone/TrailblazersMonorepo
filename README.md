@@ -6,8 +6,17 @@ This is a monorepo for the various components in the Trailblazers app: it contai
 
 Follow the steps below to use this module to generate updated JavaScript bundles:
 
-* clone the repo
+### First time
+
+* clone the repo using the command `git clone --recurse-submodules git@github.com:FrontEndCapstone/TrailblazersMonorepo.git`
+  - Note the `--recursive-submodules` flag; if you leave this off, the submodules will not download correctly.
 * run `npm install`
+* run `npm run build`
+* locate the appropriate JavaScript bundle in `./bundles` and copy it to your master branch/deploy it in the normal way
+
+
+### Subsequent times
+
 * run `npm run update-all`
 * run `npm run build`
 * locate the appropriate JavaScript bundle in `./bundles` and copy it to your master branch/deploy it in the normal way
