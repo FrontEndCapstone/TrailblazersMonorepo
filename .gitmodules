@@ -1,0 +1,12 @@
+[submodule "ProdcutDescription"]
+	path = ProdcutDescription
+	url = git@github.com:FrontEndCapstone/ProdcutDescription.git
+[submodule "Reviews"]
+	path = Reviews
+	url = git@github.com:FrontEndCapstone/Reviews.git
+[submodule "Product-Details"]
+	path = Product-Details
+	url = git@github.com:FrontEndCapstone/Product-Details.git
+[submodule "ProductComparisons"]
+	path = ProductComparisons
+	url = git@github.com:FrontEndCapstone/ProductComparisons.git
