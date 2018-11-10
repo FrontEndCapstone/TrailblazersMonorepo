@@ -1,14 +1,19 @@
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-  .BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    reviews: './Reviews/client/src/index.js',
-    comparisons: './ProductComparisons/client/src/index.jsx',
-    descriptions: './ProdcutDescription/client/src/index.jsx',
-    details: './Product-Details/client/src/index.jsx',
+    'fec-reviews-dev.us-west-2.elasticbeanstalk.com/reviews':
+      './Reviews/client/src/index.js',
+    'trailblazer-pc.us-east-2.elasticbeanstalk.com/comparisons':
+      './ProductComparisons/client/src/index.jsx',
+    'fectrail-env.k3wc6evxm5.us-east-1.elasticbeanstalk.com/descriptions':
+      './ProdcutDescription/client/src/index.jsx',
+    'fectrailblazer-env.ckr33svztx.us-east-1.elasticbeanstalk.com/details':
+      './Product-Details/client/src/index.jsx',
   },
   mode: 'development',
   module: {
@@ -28,16 +33,23 @@ module.exports = {
   resolve: { extensions: ['*', '.js', '.jsx'] },
   output: {
     path: path.resolve(__dirname, 'bundles'),
-    publicPath: 'bundles',
-    filename: '[name].bundle.js',
+    publicPath: 'http://',
+    filename: '[name].[contenthash].bundle.js',
   },
-  plugins: [new BundleAnalyzerPlugin({ analyzerMode: 'static' })],
+  plugins: [
+    // new BundleAnalyzerPlugin({ analyzerMode: 'static' }),
+    new HtmlWebpackPlugin({
+      title: 'Caching',
+      template: 'indexTemplate.html',
+    }),
+    new CleanWebpackPlugin(['bundles']),
+  ],
   optimization: {
     splitChunks: {
       cacheGroups: {
         commons: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
+          name: 'fec-reviews-dev.us-west-2.elasticbeanstalk.com/vendors',
           chunks: 'all',
         },
       },
